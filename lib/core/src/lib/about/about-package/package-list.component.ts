@@ -21,6 +21,7 @@ import { PackageInfo } from '../interfaces';
 @Component({
   selector: 'adf-about-package-list',
   templateUrl: './package-list.component.html',
+  styleUrls: ['./package-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

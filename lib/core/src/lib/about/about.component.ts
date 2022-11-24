@@ -15,13 +15,14 @@
  * limitations under the License.
  */
 
-import { Component, ContentChildren, QueryList, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChildren, QueryList } from '@angular/core';
 import { AboutPanelDirective } from './about-panel.directive';
 
 @Component({
     selector: 'adf-about',
     templateUrl: './about.component.html',
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ['./about.component.scss'],
+    //encapsulation: ViewEncapsulation.None
 })
 export class AboutComponent {
     @ContentChildren(AboutPanelDirective)

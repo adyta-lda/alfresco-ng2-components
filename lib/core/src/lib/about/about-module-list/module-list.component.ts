@@ -25,6 +25,7 @@ interface ModuleInfo {
 @Component({
   selector: 'adf-about-module-list',
   templateUrl: './module-list.component.html',
+  styleUrls: ['./module-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

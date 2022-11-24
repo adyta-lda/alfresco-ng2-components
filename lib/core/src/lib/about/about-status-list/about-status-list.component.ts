@@ -21,6 +21,7 @@ import { StatusData } from '../interfaces';
 @Component({
     selector: 'adf-about-status-list',
     templateUrl: './about-status-list.component.html',
+    styleUrls: ['./about-status-list.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
