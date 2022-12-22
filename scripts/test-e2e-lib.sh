@@ -139,7 +139,7 @@ while [[ $1 == -* ]]; do
 done
 
 rm -rf ./e2e/downloads/
-#rm -rf ./e2e-output/
+rm -rf ./e2e-output/
 echo "====== BROWSER_RUN: $BROWSER_RUN ======"
 echo "====== Update webdriver-manager ====="
 if [ "$CI" = "true" ]; then
