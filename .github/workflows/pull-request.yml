@@ -1,6 +1,9 @@
 name: "pull-request"
 
 on:
+  push:
+    branches:
+      - AAE-11875-fixing2
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
