@@ -70,7 +70,7 @@ jobs:
           npm ci
           nx run cli:bundle
           nx run testing:bundle
-      - run: nx affected --target=lint $NX_CALCULATION_FLAGS
+      #- run: nx affected --target=lint $NX_CALCULATION_FLAGS
       - run: /usr/bin/xvfb-run --auto-servernum nx affected:test $NX_CALCULATION_FLAGS --exclude="insights,core,extensions,process-services,process-services-cloud" }}
       - run: nx affected:build $NX_CALCULATION_FLAGS --prod
       - run: nx build demoshell --configuration production
