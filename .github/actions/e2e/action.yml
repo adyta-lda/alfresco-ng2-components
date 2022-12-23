@@ -134,6 +134,7 @@ runs:
       uses: browser-actions/setup-chrome@latest
 
     - name: setup variables
+      shell: bash
       run: |
         sudo apt-get install -y x11-xserver-utils
         sudo apt-get install -y xvfb    
