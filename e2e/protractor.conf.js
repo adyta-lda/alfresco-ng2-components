@@ -157,7 +157,8 @@ exports.config = {
                 '--no-sandbox',
                 '--disable-web-security',
                 '--disable-browser-side-navigation',
-                '--allow-running-insecure-content',                             
+                '--allow-running-insecure-content',
+                '--remote-debugging-port=9222',                            
                 ...(BROWSER_RUN === true ? [] : ['--headless'])]
         }
     },
