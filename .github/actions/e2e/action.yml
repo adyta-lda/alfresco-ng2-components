@@ -128,11 +128,7 @@ runs:
         NX_CALCULATION_FLAGS=$(echo $NX_CALCULATION_FLAGS | sed "s@'@@g")
         echo "NX_CALCULATION_FLAGS=$NX_CALCULATION_FLAGS" >> $GITHUB_ENV
         GIT_HASH=$(echo $GIT_HASH | sed "s@'@@g")
-        echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV
-
-    - name: chrome setup
-      id: chrome_setup
-      uses: browser-actions/setup-chrome@latest  
+        echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV    
 
     - name: run test with retries
       id: retry_run
@@ -151,7 +147,14 @@ runs:
           set -u;
           export GH_ACTION_RETRY_COUNT=$(cat ${GITHUB_OUTPUT} | grep -E '^[0-9]{1,2}$' | tail -n1)
           echo "RETRY GH_ACTION_RETRY_COUNT = <$GH_ACTION_RETRY_COUNT>"                     
-          if [[ ${{ inputs.e2e-test-folder }} == 'content-services/upload' ]]; then                     
+          if [[ ${{ inputs.e2e-test-folder }} == 'content-services/upload' ]]; then
+            export DISPLAY:=99
+            chromedriver --url-base=/wd/hub &
+            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional 
+            chrome=$(google-chrome --product-version)
+            ./node_modules/protractor/bin/webdriver-manager update --gecko=false --versions.chrome=$chrome
+            npm run postbuild:ci
+            npm run lite-server-e2e>/dev/null & ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js                     
             bash ./scripts/travis/e2e/e2e.sh "$E2E_TEST_ID" "browser" || exit 1
           else
             bash ./scripts/travis/e2e/e2e.sh "$E2E_TEST_ID" || exit 1          
