@@ -128,7 +128,11 @@ runs:
         NX_CALCULATION_FLAGS=$(echo $NX_CALCULATION_FLAGS | sed "s@'@@g")
         echo "NX_CALCULATION_FLAGS=$NX_CALCULATION_FLAGS" >> $GITHUB_ENV
         GIT_HASH=$(echo $GIT_HASH | sed "s@'@@g")
-        echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV   
+        echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV
+
+    - name: chrome setup
+      id: chrome_setup
+      uses: browser-actions/setup-chrome@latest  
 
     - name: run test with retries
       id: retry_run
