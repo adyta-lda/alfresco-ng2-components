@@ -166,8 +166,8 @@ else
         ls dist/demo-shell/ || exit 1
 
         npm run postbuild:ci  || exit 1
-
-        npm run lite-server-e2e>/dev/null & $DEBUG_OPTION ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js || exit 1
+        echo "PRIMA DI ESEGUIRE npm run lite-server-e2e>/dev/null & ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js || exit 1"
+        npm run lite-server-e2e>/dev/null & ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js || exit 1
      else
         echo "====== Run without lite-server  ====="
         $DEBUG_OPTION  ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js || exit 1

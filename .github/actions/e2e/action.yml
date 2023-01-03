@@ -150,9 +150,8 @@ runs:
           if [[ ${{ inputs.e2e-test-folder }} == 'content-services/upload' ]]; then
             export DISPLAY:=99
             chromedriver --url-base=/wd/hub &
-            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional 
-            chrome=$(google-chrome --product-version)
-            ./node_modules/protractor/bin/webdriver-manager update --gecko=false --versions.chrome=$chrome                    
+            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+            echo "PRIMA DI ESEGUIRE LO SCRIPT e2e.sh:"                             
             bash ./scripts/travis/e2e/e2e.sh "$E2E_TEST_ID" "browser" || exit 1
           else
             bash ./scripts/travis/e2e/e2e.sh "$E2E_TEST_ID" || exit 1          
