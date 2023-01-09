@@ -105,6 +105,24 @@ export class TagService {
         return observableRemove;
     }
 
+    /**
+     * Completely deletes a tag.
+     *
+     * @param tag Id of the tag to be deleted
+     * @returns Null object when the operation completes
+     */
+    deleteTag(tagId: string): Observable<any> {
+        const observableRemove = from(this.tagsApi.deleteTag(tagId));
+
+        observableRemove.subscribe((data) => {
+            this.refresh.emit(data);
+        }, (err) => {
+            this.handleError(err);
+        });
+
+        return observableRemove;
+    }
+
     private handleError(error: any) {
         this.logService.error(error);
         return throwError(error || 'Server error');
