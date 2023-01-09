@@ -106,21 +106,23 @@ export class TagService {
     }
 
     /**
-     * Completely deletes a tag.
+     * Deletes a tag with tagId.
+     * This will cause the tag to be removed from all nodes.
+     * You must have admin rights to delete a tag.
      *
-     * @param tag Id of the tag to be deleted
+     * @param tagId of the tag to be deleted
      * @returns Null object when the operation completes
      */
     deleteTag(tagId: string): Observable<any> {
-        const observableRemove = from(this.tagsApi.deleteTag(tagId));
+        const observableDelete = from(this.tagsApi.deleteTag(tagId));
 
-        observableRemove.subscribe((data) => {
+        observableDelete.subscribe((data) => {
             this.refresh.emit(data);
         }, (err) => {
             this.handleError(err);
         });
 
-        return observableRemove;
+        return observableDelete;
     }
 
     private handleError(error: any) {
