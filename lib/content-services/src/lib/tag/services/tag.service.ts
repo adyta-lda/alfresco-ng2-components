@@ -118,8 +118,6 @@ export class TagService {
 
         observableDelete.subscribe((data) => {
             this.refresh.emit(data);
-        }, (err) => {
-            this.handleError(err);
         });
 
         return observableDelete;
