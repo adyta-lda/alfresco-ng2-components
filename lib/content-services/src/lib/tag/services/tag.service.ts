@@ -18,7 +18,7 @@
 import { AlfrescoApiService, LogService } from '@alfresco/adf-core';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, from, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { TagBody, TagPaging, TagEntry, TagsApi } from '@alfresco/js-api';
 
 @Injectable({
@@ -113,14 +113,10 @@ export class TagService {
      * @param tagId of the tag to be deleted
      * @returns Null object when the operation completes
      */
-    deleteTag(tagId: string): Observable<any> {
-        const observableDelete = from(this.tagsApi.deleteTag(tagId));
-
-        observableDelete.subscribe((data) => {
-            this.refresh.emit(data);
-        });
-
-        return observableDelete;
+    deleteTag(tagId: string): Observable<void> {
+        return from(this.tagsApi.deleteTag(tagId)).pipe(
+            tap((data) => this.refresh.emit(data))
+        );
     }
 
     private handleError(error: any) {
