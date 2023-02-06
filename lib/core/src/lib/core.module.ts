@@ -43,7 +43,6 @@ import { NotificationHistoryModule } from './notifications/notification-history.
 import { BlankPageModule } from './blank-page/blank-page.module';
 
 import { DirectiveModule } from './directives/directive.module';
-import { DownloadZipDialogModule } from '../../../content-services/src/lib/dialogs/download-zip/download-zip.dialog.module';
 import { PipeModule } from './pipes/pipe.module';
 
 import { AlfrescoApiService } from './services/alfresco-api.service';
@@ -76,7 +75,6 @@ import { IdentityUserInfoModule } from './identity-user-info/identity-user-info.
         CommonModule,
         IdentityUserInfoModule,
         DirectiveModule,
-        DownloadZipDialogModule,
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,
@@ -115,7 +113,6 @@ import { IdentityUserInfoModule } from './identity-user-info/identity-user-info.
         PipeModule,
         CommonModule,
         DirectiveModule,
-        DownloadZipDialogModule,
         ClipboardModule,
         FormsModule,
         IdentityUserInfoModule,
