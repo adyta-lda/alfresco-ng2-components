@@ -134,7 +134,7 @@ jobs:
         run: |
           echo "npm exe"
           npm dist-tags @types/node
-          npm install --global 17.0.41
+          npm install --global 18.13.0
       - name: install
         run: |
           #npm install -g typescript
