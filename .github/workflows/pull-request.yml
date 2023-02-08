@@ -138,7 +138,7 @@ jobs:
           tsc -v  #4.9.4
           #npm dist-tags @types/node
           npm install -g n
-          n latest
+          sudo n latest
           echo "after last node"
           node -v
       - name: install
