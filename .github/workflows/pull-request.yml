@@ -143,7 +143,7 @@ jobs:
           # node -v
           #curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
           node -v
-          nvm install node --reinstall-packages-from=node
+          sudo apt-get install nodejs
           node -v
       - name: install
         run: |
