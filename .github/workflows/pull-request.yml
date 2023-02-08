@@ -132,11 +132,12 @@ jobs:
       - uses: ./.github/actions/setup
       - name: debug ts
         run: |
-          echo "eseguo where tsc"
-          where tsc
+          echo "npm exe"
+          npm dist-tags @types/node
+          npm install --global 17.0.41
       - name: install
         run: |
-          npm install -g typescript
+          #npm install -g typescript
           npm ci
           nx run cli:bundle
           nx run testing:bundle
