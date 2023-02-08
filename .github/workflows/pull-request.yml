@@ -133,6 +133,9 @@ jobs:
       - name: debug ts
         run: |
           echo "npm exe"
+          node -v
+          npm -v
+          tsc -v
           npm dist-tags @types/node
           npm install --global 18.13.0
       - name: install
