@@ -130,6 +130,10 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history for all tags and branches
       - uses: ./.github/actions/setup
+      - name: debug ts
+        run: |
+          echo "eseguo where tsc"
+          where tsc
       - name: install
         run: |
           npm install -g typescript
